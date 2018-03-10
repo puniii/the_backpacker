@@ -1,0 +1,42 @@
+<aside class="callout">
+    <div class="text-vertical-center">
+        <h1>User Profile</h1>
+    </div>
+</aside>
+
+<article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+          <h2 class="section-heading"></h2>
+          <p>Email:
+            <%= @user.email %></p>
+          <% if @user.image.present? %>
+            <%= image_tag(@user.image.url) %>
+            <p>お住まいの地域:<%= @user.area %></p>
+            <p>紹介文:<%= @user.introduction %></p>
+            <br>
+            <br>
+          <% end %>
+
+
+          <%= link_to "NEW POST", new_post_path ,class:'btn btn-primary'%>
+          <br>
+          <hr>
+
+          <h2 class="section-heading">いいね！一覧</h2>
+          <% @likes_posts.each do |like| %>
+
+            <p class="post-meta"><%= image_tag(@user.image , size: 30) %>
+              <%= like.user.name %></p>
+            <p><%= like.content %></p>
+            <span><%= link_to 'いいね！を取り消す', post_path(like), class: 'btn btn-default'%></span>
+            <br>
+            <hr>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </article>

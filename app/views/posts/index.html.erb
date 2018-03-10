@@ -1,0 +1,39 @@
+<aside class="callout">
+    <div class="text-vertical-center">
+        <h1>Index</h1>
+    </div>
+</aside>
+
+<div class="container">
+  <p><%= notice %></p>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-preview">
+        <% @posts.each do |post| %>
+          <p class="post-meta"><%= image_tag(post.user.image , size: 30) %>
+            <%= post.user.name %></p>
+          <h2 class="post-title">
+            <%= post.content %>
+          </h2>
+          <h3 class="post-subtitle">
+            <% if post.image.present? %>
+              <%= image_tag(post.image , size: 50) %>
+            <% end %>
+          </h3>
+
+          <%= link_to '確認', post_path(post.id), class: 'btn btn-default'%>
+          <% if current_user.id == post.user.id %>
+            <%= link_to '編集', edit_post_path(post.id), data: { confirm: '編集しますか？' }, class: 'btn btn-default' %>
+            <%= link_to '削除', post_path(post.id), method: :delete ,data: { confirm: '削除しますか？' } , class: 'btn btn-default'%>
+
+          <% end %>
+          <hr>
+        <% end %>
+
+      </div>
+    </div>
+
+    <%= link_to 'New tweet!', new_post_path, class: 'btn btn-info'%>
+  </div>
+</div>
+<hr>
