@@ -3,7 +3,9 @@ class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new,:edit,:index]
 
   def index
+    # @posts = Post.all
     @posts = Post.all
+    @posts = Post.page(params[:page]).per(3)
 
   end
 
@@ -12,16 +14,32 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @wifi = @post.wifis.build
+    @toilet = @post.toilets.build
+    @trouble = @post.troubles.build
+
     if params[:back]
       @post = Post.new(post_params)
     else
       @post = Post.new
     end
+
   end
 
   def create
     @post = Post.new(post_params)
+    create_post = @post.save!
+
+    @wifi = create_post.wifi.build(wifi_params)
+      @wifi.save!
+    @toilet = create_post.toilet.build(toilet_params)
+      @toilet.save!
+    @trouble = create_post.trouble.build(trouble_params)
+      @trouble.save!
+
     @post.user_id = current_user.id
+
+
 
     respond_to do |format|
 
@@ -43,7 +61,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @like = current_user.likes.find_by(post_id: @post.id)
+    # @wifi = Wifi.find_by(post_id: @post.id)
+    # @toilet = Toilet.find_by(post_id: @post.id)
+    # @trouble = Trouble.find_by(post_id: @post.id)
+    # @like = current_user.likes.find_by(post_id: @post.id)
 
   end
 
@@ -63,7 +84,19 @@ class PostsController < ApplicationController
   end
 
   def confirm
+    # binding.pry
+
     @post = Post.new(post_params)
+    @wifi = @post.wifis.build(wifi_params)
+    @toilet = @post.toilets.build(toilet_params)
+    @trouble = @post.troubles.build(trouble_params)
+    # create_post = @post.save!
+    # @wifi = create_post.wifi.build(wifi_params)
+    #   @wifi.save!
+    # @toilet = create_post.toilet.build(toilet_params)
+    #   @toilet.save!
+    # @trouble = create_post.trouble.build(trouble_params)
+    #   @trouble.save!
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
@@ -72,11 +105,25 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:content, :user_id, :image, :spot)
+      params.require(:post).permit(:content,:user_id,:image,:spot)
     end
+
+    def wifi_params
+      params.require(:post)[:wifi].permit(:condition_1, :condition_2, :condition_3)
+    end
+
+    def toilet_params
+      params.require(:post)[:toilet].permit(:information, :comfortable, :box_number,:baggage)
+    end
+
+    def trouble_params
+      params.require(:post)[:trouble].permit(:atm, :station, :bus, :pharmacy)
+    end
+
 
     def set_post
       @post = Post.find(params[:id])
+
     end
 
     def logged_in_user

@@ -14,54 +14,108 @@
 <!-- Main Content -->
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <div class="col-lg-8 col-md-10 ">
       <div class="row control-group">
 
         <div class="form-group col-xs-12 floating-label-form-group controls">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <%= form.text_field :spot ,class: "form-control" ,placeholder: "どこへ行きましたか？"%>
+            <p class="help-block text-danger"></p>
+          </div>
           <!-- Map -->
           <div id="map"></div>
 
-            <script>
-            function initMap() {
-            var tatebayashi = {lat: 36.2448429, lng: 139.5419484};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 11,
-              center: tatebayashi
-            });
-            }
-            </script>
-            <!-- YOUR_API_KEYのところにAPIキーを挿入 -->
+          <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=<% ENV[" YOUR_API_KEY"] %>&callback=initMap"></script>
 
-<script async defer src="<https://maps.googleapis.com/maps/api/js?key=<% ENV["YOUR_API_KEY"] %>&callback=initMap>"  type="text/javascript"></script>
+          <!-- wifi -->
+          <%= form.fields_for(@wifi) do |w| %>
+          <p>wifi</p>
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <%= w.text_field :condition_1 ,class: "form-control" ,placeholder: "wifiの通信状況①"%>
+            <p class="help-block text-danger"></p>
+            <br>
+          </div>
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <%= w.text_field :condition_2 ,class: "form-control" ,placeholder: "wifiの通信状況②"%>
+            <p class="help-block text-danger"></p>
+            <br>
+          </div>
 
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <%= w.text_field :condition_3 ,class: "form-control" ,placeholder: "wifiの通信状況③"%>
+            <p class="help-block text-danger"></p>
+            <br>
+          </div>
 
-        </div>
-
+        <% end %>
+        <!-- トイレ -->
+        <%= form.fields_for(@toilet) do |t| %>
+        <p>トイレ</p>
         <div class="form-group col-xs-12 floating-label-form-group controls">
-          <%= form.text_field :content ,class: "form-control" ,placeholder: "コメントを入力してください"%>
+          <%= t.text_field :comfortable ,class: "form-control" ,placeholder: "快適度"%>
           <p class="help-block text-danger"></p>
-
           <br>
-
-          <%= form.file_field :image, id: :feed_image ,placeholder: "pic"%>
-          <%= form.hidden_field :image_cache %>
-          <p class="help-block text-danger"></p>
         </div>
-
         <div class="form-group col-xs-12 floating-label-form-group controls">
-          <%= form.text_field :content ,class: "form-control" ,placeholder: "コメントを入力してください"%>
+          <%= t.text_field :box_number,class: "form-control" ,placeholder: "個室の数"%>
+          <p class="help-block text-danger"></p>
+          <br>
+        </div>
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+          <%= t.text_field :baggage,class: "form-control" ,placeholder: "荷物スペース"%>
+          <p class="help-block text-danger"></p>
+          <br>
+        </div>
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+          <%= t.text_field :information,class: "form-control" ,placeholder: "その他"%>
           <p class="help-block text-danger"></p>
         </div>
-
+      <% end %>
+      <!--トラブル-->
+      <br>
+      <%= form.fields_for(@trouble) do |tr| %>
+      <p>トラブル時</p>
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <%= tr.text_field :atm ,class: "form-control" ,placeholder: "近くのATMは？"%>
+        <p class="help-block text-danger"></p>
       </div>
-
       <br>
-      <%= form.submit "Post tweet", class: 'btn btn-info' %>
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <%= tr.text_field :station ,class: "form-control" ,placeholder: "最寄駅は？"%>
+        <p class="help-block text-danger"></p>
+      </div>
       <br>
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <%= tr.text_field :bus ,class: "form-control" ,placeholder: "最寄の停留所は？"%>
+        <p class="help-block text-danger"></p>
+      </div>
+      <br>
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <%= tr.text_field :pharmacy ,class: "form-control" ,placeholder: "薬局は？"%>
+        <p class="help-block text-danger"></p>
+      </div>
     <% end %>
     <br>
-    <%= link_to "back", posts_path, class: 'btn btn-default' %>
+
+    <%= form.file_field :image, id: :feed_image ,placeholder: "pic"%>
+    <%= form.hidden_field :image_cache %>
+    <p class="help-block text-danger"></p>
   </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <%= form.text_field :content ,class: "form-control" ,placeholder: "コメントを入力してください"%>
+    <p class="help-block text-danger"></p>
+  </div>
+
+</div>
+
+<br>
+<%= form.submit "Post tweet", class: 'btn btn-info' %>
+<br>
+<% end %>
+<br>
+<%= link_to "back", posts_path, class: 'btn btn-default' %>
+</div>
 
 </div>
 </div>

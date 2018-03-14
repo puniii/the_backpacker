@@ -1,3 +1,48 @@
+
+  // Note: This example requires that you consent to location sharing when prompted by your browser. If you see the error "The Geolocation service failed.", it means you probably did not give permission for the browser to locate you.
+
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      zoom: 6
+    });
+    var infoWindow = new google.maps.InfoWindow({map: map});
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        map.setCenter(pos);
+      }, function () {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? 'Error: The Geolocation service failed.'
+        : 'Error: Your browser doesn\'t support geolocation.'
+    );
+  }
+
+
+
+
 // var getMap = (function() {
 //   function codeAddress(address) {
 //     // google.maps.Geocoder()コンストラクタのインスタンスを生成
@@ -16,7 +61,9 @@
 //     var marker;
 //
 //     // geocoder.geocode()メソッドを実行
-//     geocoder.geocode( { 'address': address}, function(results, status) {
+//     geocoder.geocode({
+//       'address': address
+//     }, function(results, status) {
 //
 //       // ジオコーディングが成功した場合
 //       if (status == google.maps.GeocoderStatus.OK) {
@@ -25,8 +72,8 @@
 //         map.setCenter(results[0].geometry.location);
 //
 //         //☆表示している地図上の緯度経度
-//         document.getElementById('lat').value=results[0].geometry.location.lat();
-//         document.getElementById('lng').value=results[0].geometry.location.lng();
+//         document.getElementById('lat').value = results[0].geometry.location.lat();
+//         document.getElementById('lng').value = results[0].geometry.location.lng();
 //
 //         // マーカー設定
 //         marker = new google.maps.Marker({
@@ -34,7 +81,7 @@
 //           position: results[0].geometry.location
 //         });
 //
-//       // ジオコーディングが成功しなかった場合
+//         // ジオコーディングが成功しなかった場合
 //       } else {
 //         console.log('Geocode was not successful for the following reason: ' + status);
 //       }
@@ -45,11 +92,12 @@
 //     map.addListener('click', function(e) {
 //       getClickLatLng(e.latLng, map);
 //     });
+//
 //     function getClickLatLng(lat_lng, map) {
 //
 //       //☆表示している地図上の緯度経度
-//       document.getElementById('lat').value=lat_lng.lat();
-//       document.getElementById('lng').value=lat_lng.lng();
+//       document.getElementById('lat').value = lat_lng.lat();
+//       document.getElementById('lng').value = lat_lng.lng();
 //
 //       // マーカーを設置
 //       marker.setMap(null);
@@ -79,7 +127,7 @@
 //       }
 //
 //       //読み込まれたときに地図を表示
-//       window.onload = function(){
+//       window.onload = function() {
 //         // フォームに入力された住所情報を取得
 //         var address = document.getElementById("address").value;
 //         // 取得した住所を引数に指定してcodeAddress()関数を実行

@@ -61,6 +61,8 @@ gem 'mini_magick', '~> 4.8'
 gem 'binding_of_caller', '~> 0.8.0'
 gem 'font-awesome-rails', '~> 4.5'
 gem 'dotenv-rails'
+gem 'geocoder'
+gem 'kaminari'
 
 group :development do
   gem 'letter_opener_web'

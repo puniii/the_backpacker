@@ -12,10 +12,15 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-        <h2 class="section-heading"><%= @post.content %></h2>
+        <h2 class="section-heading"><%= @post.spot %></h2>
 
         <%= image_tag @post.image %>
         <br>
+        <% if current_user.id == @post.user.id %>
+          <%= link_to '編集', edit_post_path(@post.id), data: { confirm: '編集しますか？' }, class: 'btn btn-default' %>
+          <%= link_to '削除', post_path(@post.id), method: :delete ,data: { confirm: '削除しますか？' } , class: 'btn btn-default'%>
+
+        <% end %>
 
         <% unless @post.user == current_user.id %>
           <% if @like.present? %>
@@ -27,8 +32,13 @@
             <%= link_to 'いいね！', likes_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
 
           <% end %>
-
         <% end %>
+        <%= @post.content %>
+
+        <%= @wifi.condition_1 %>
+
+
+
 
       </div>
     </div>
