@@ -34,8 +34,18 @@
           <% end %>
         <% end %>
         <%= @post.content %>
+        <% @post.wifis.each do |w| %>
+        <p class="post-meta">
+        <%= w.condition_1 %>
+        <%= w.condition_2 %>
+        <%= w.condition_3 %></p>
 
-        <%= @wifi.condition_1 %>
+
+
+
+
+<% end %>
+
 
 
 
