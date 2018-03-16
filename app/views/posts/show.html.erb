@@ -39,17 +39,16 @@
         <%= w.condition_1 %>
         <%= w.condition_2 %>
         <%= w.condition_3 %></p>
+        <% end %>
 
+        <p>コメント一覧</p>
+          <div id="comments_area">
+          <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+            <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+          </div>
 
-
-
-
-<% end %>
-
-
-
-
-
+          <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+          <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
       </div>
     </div>
   </article>

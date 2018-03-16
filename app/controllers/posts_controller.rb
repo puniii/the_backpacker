@@ -44,6 +44,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = @post.comments.build
+    @comments = @post.comments
 
   end
 
@@ -62,12 +64,10 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    # binding.pry
     @post = Post.new(post_params)
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
-
   end
 
   private
@@ -76,11 +76,11 @@ class PostsController < ApplicationController
         :content,
         :user_id,
         :image,
+        :cache,
         :spot,
-        wifis_attributes:[:condition_1, :condition_2, :condition_3],
-        toilets_attributes:[:information, :comfortable, :box_number,:baggage],
-        troubles_attributes:[:atm, :station, :bus, :pharmacy]
-        )
+        wifi_attributes:[:condition_1, :condition_2, :condition_3],
+        toilet_attributes:[:information, :comfortable, :box_number,:baggage],
+        trouble_attributes:[:atm, :station, :bus, :pharmacy])
     end
 
 

@@ -3,16 +3,21 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  resources :contacts
+  root to: 'sessions#top'
 
-  root to: 'sessions#new'
+  resources :contacts do
+    collection do
+    get :top
+  end
+  end
+
   resources :likes, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :posts do
+    resources :comments
     collection do
     post :confirm
-    get :top
     end
   end
 end
