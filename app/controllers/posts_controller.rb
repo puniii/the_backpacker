@@ -10,9 +10,9 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @wifi = @post.wifis.build
-    @toilet = @post.toilets.build
-    @trouble = @post.troubles.build
+    @post.wifis.build
+    @post.toilets.build
+    @post.troubles.build
 
     if params[:back]
       @post = Post.new(post_params)
@@ -78,17 +78,15 @@ class PostsController < ApplicationController
         :image,
         :cache,
         :spot,
-        wifi_attributes:[:condition_1, :condition_2, :condition_3],
-        toilet_attributes:[:information, :comfortable, :box_number,:baggage],
-        trouble_attributes:[:atm, :station, :bus, :pharmacy])
+        wifis_attributes:[:condition_1, :condition_2, :condition_3],
+        toilets_attributes:[:information, :comfortable, :box_number,:baggage],
+        troubles_attributes:[:atm, :station, :bus, :pharmacy])
     end
 
 
     def set_post
       @post = Post.find(params[:id])
-      @wifi = @post.wifis.build
-      @toilet = @post.toilets.build
-      @trouble = @post.troubles.build
+
     end
 
     def logged_in_user
