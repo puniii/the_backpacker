@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = Post.page(params[:page]).per(3)
-
   end
 
   def new
@@ -16,6 +15,9 @@ class PostsController < ApplicationController
 
     if params[:back]
       @post = Post.new(post_params)
+      @post.wifis.build(post_params)
+      @post.toilets.build(post_params)
+      @post.troubles.build(post_params)
     else
       @post = Post.new
     end
@@ -26,15 +28,14 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     respond_to do |format|
+      if @post.save
+        ContactMailer.post_mail(@post).deliver_later
+        format.html { redirect_to @post, notice: '投稿しました' }
+        format.json { render :show, status: :created, location: @post }
 
-    if @post.save
-      ContactMailer.post_mail(@post).deliver_later
-      format.html { redirect_to @post, notice: '投稿しました' }
-      format.json { render :show, status: :created, location: @post }
-
-    else
-      render'new'
-    end
+      else
+        render 'new'
+      end
     end
 
     if params[:cache][:image].present?
@@ -46,53 +47,52 @@ class PostsController < ApplicationController
   def show
     @comment = @post.comments.build
     @comments = @post.comments
-
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-      @post.update(post_params)
-      redirect_to posts_path,notice: "つぶやきを編集しました！"
+    @post.update(post_params)
+    redirect_to posts_path, notice: 'つぶやきを編集しました！'
   end
 
   def destroy
-      @post.destroy
-      redirect_to posts_path,notice:"つぶやきを削除しました！"
+    @post.destroy
+    redirect_to posts_path, notice: 'つぶやきを削除しました！'
   end
 
   def confirm
     @post = Post.new(post_params)
+
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
+    # binding.pry
   end
 
   private
-    def post_params
-      params.require(:post).permit(
-        :content,
-        :user_id,
-        :image,
-        :cache,
-        :spot,
-        wifis_attributes:[:condition_1, :condition_2, :condition_3],
-        toilets_attributes:[:information, :comfortable, :box_number,:baggage],
-        troubles_attributes:[:atm, :station, :bus, :pharmacy])
+
+  def post_params
+    params.require(:post).permit(
+      :content,
+      :user_id,
+      :image,
+      :cache,
+      :spot,
+      wifis_attributes: %i[condition_1 condition_2 condition_3 post_id],
+      toilets_attributes: %i[information comfortable box_number baggage post_id],
+      troubles_attributes: %i[atm station bus pharmacy post_id]
+    )
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def logged_in_user
+    unless current_user
+      flash[:referer] = 'ログインしてください'
+      render new_session_path
     end
-
-
-    def set_post
-      @post = Post.find(params[:id])
-
-    end
-
-    def logged_in_user
-      unless current_user
-        flash[:referer] = 'ログインしてください'
-        render new_session_path
-      end
-    end
+  end
 end

@@ -63,6 +63,7 @@ gem 'font-awesome-rails', '~> 4.5'
 gem 'dotenv-rails'
 gem 'geocoder'
 gem 'kaminari'
+gem 'nested_form'
 
 group :development do
   gem 'letter_opener_web'

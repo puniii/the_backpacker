@@ -26,27 +26,21 @@
         <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
         <hr>
         <br>
-
         <%= form.fields_for :wifi do |w| %>
-        <p>WIFI情報 :<%= w.condition_1 %></p>
-        <p>WIFI情報 :<%= w.condition_2 %></p>
-        <p>WIFI情報 :<%= w.condition_3 %></p>
+        <%= w.hidden_field :condition_1 %>
+        <p>WIFI情報 :<%= form.wifi.condition_1 %></p>
         <% end %>
 
+
         <%= form.fields_for :toilet do |t| %>
-        <p>快適度 :<%= t.comfortable %></p>
-        <p>個室の数 :<%= t.box_number %></p>
-        <p>荷物スペース :<%= t.baggage %></p>
-        <p>その他 :<%= t.information %></p>
+        <%= t.hidden_field :comfortable %>
+
         <% end %>
 
         <%= form.fields_for :trouble do |tr| %>
-        <p>ATM :<%= tr.atm %></p>
-        <p>最寄駅 :<%= tr.station %></p>
-        <p>バス停 :<%= tr.bus %></p>
-        <p>薬局 :<%= tr.pharmacy %></p>
-        <% end %>
+        <%= tr.hidden_field :atm %>
 
+        <% end %>
 
         <%= form.submit "登録する" , class: 'btn btn-default' %>
       <% end %>
