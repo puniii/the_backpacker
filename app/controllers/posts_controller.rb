@@ -49,7 +49,8 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     @post.update(post_params)
@@ -63,7 +64,6 @@ class PostsController < ApplicationController
 
   def confirm
     @post = Post.new(post_params)
-
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
@@ -79,9 +79,9 @@ class PostsController < ApplicationController
       :image,
       :cache,
       :spot,
-      wifis_attributes: %i[condition_1 condition_2 condition_3 post_id],
-      toilets_attributes: %i[information comfortable box_number baggage post_id],
-      troubles_attributes: %i[atm station bus pharmacy post_id]
+      wifis_attributes: [:condition_1, :condition_2, :condition_3],
+      toilets_attributes: [:information, :comfortable, :box_number, :baggage],
+      troubles_attributes: [:atm, :station, :bus, :pharmacy]
     )
   end
 
