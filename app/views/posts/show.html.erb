@@ -31,14 +31,23 @@
           <% end %>
         <% end %>
         <%= @post.content %>
-        <% @post.wifis.each do |k| %>
-          <%= k.condition_1 %>
-          <%= k.condition_2 %>
-          <%= k.condition_3 %>
+        <% @post.wifis.each do |w| %>
+          <p>WIfi情報1 :<%= w.condition_1 %></p><hr>
+          <p>WIfi情報2 :<%= w.condition_2 %></p><hr>
+          <p>WIfi情報3 :<%= w.condition_3 %></p><hr>
         <% end %>
-
-
-
+        <% @post.toilets.each do |t| %>
+          <p>トイレ情報 :<%= t.information %></p><hr>
+          <p>快適度 :<%= t.comfortable %></p><hr>
+          <p>個室の数 :<%= t.box_number %></p><hr>
+          <p>荷物が置けるか :<%= t.baggage %></p><hr>
+        <% end %>
+        <% @post.troubles.each do |tr| %>
+          <p>ATM :<%= tr.atm %></p><hr>
+          <p>最寄駅 :<%= tr.station %></p><hr>
+          <p>近くのバス停 :<%= tr.bus %></p><hr>
+          <p>薬局 :<%= tr.pharmacy %></p><hr>
+        <% end %>
 
         <p>コメント一覧</p>
           <div id="comments_area">

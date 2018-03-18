@@ -25,7 +25,7 @@
         <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
         <hr>
         <br>
-        <%= form.fields_for :wifi do |w| %>
+        <%= form.fields_for :wifis do |w| %>
         <%= w.hidden_field :condition_1 %>
         <%= w.hidden_field :condition_2 %>
         <%= w.hidden_field :condition_3 %>
