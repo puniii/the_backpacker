@@ -4,14 +4,16 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @posts = Post.page(params[:page]).per(3)
+    @post = Post.page(params[:page]).per(3)
+    @search = Post.search(params[:q])
+    @posts = @search.result
   end
 
   def new
-    @post = Post.new
-    @post.wifis.build
-    @post.toilets.build
-    @post.troubles.build
+    # @post = Post.new
+    # @post.wifis.build
+    # @post.toilets.build
+    # @post.troubles.build
 
     if params[:back]
       @post = Post.new(post_params)

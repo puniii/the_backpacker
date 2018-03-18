@@ -9,6 +9,40 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="post-preview">
+        <h1>Listing topics</h1>
+        <%= search_form_for @search do |f| %>
+
+
+          <%= f.label :spot_cont, '行った場所を検索しよう' %>
+
+            <span class="input-group-btn">
+            <%= f.text_field :spot_cont , class:"form-control" ,placeholder:"Search for..." ,type:"text" %>
+            <%= f.submit 'Go' ,class:"btn btn-default" ,type:"button" %>
+            <% end %>
+            </span>
+        <br>
+      </div>
+      <br>
+    </div>
+
+
+
+    <!-- <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><! /input-group -->
+  <!-- </div><! /.col-lg-6 -->
+<!-- </div> -->
+
+
+
+
+
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-preview">
         <% @posts.each do |post| %>
           <p class="post-meta"><%= image_tag(post.user.image , size: 30) %>
             <%= post.user.name %></p>
@@ -20,13 +54,14 @@
               <%= image_tag(post.image , size: 50) %>
             <% end %>
           </h3>
-
+          <p class="post-meta">投稿日<%= post.created_at %></p>
+          <br>
           <%= link_to '続きを見る', post_path(post.id), class: 'btn btn-default'%>
 
           <hr>
         <% end %>
 
-<%= paginate @posts %>
+<%= paginate @post %>
       </div>
     </div>
 
