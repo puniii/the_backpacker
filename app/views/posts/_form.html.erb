@@ -34,7 +34,7 @@
         </div>
 
         <!-- wifi -->
-        <%= form.fields_for :wifi do |w| %>
+        <%= form.fields_for :wifis do |w| %>
         <p>wifi</p>
         <div class="form-group col-xs-12 floating-label-form-group controls">
           <%= w.text_field :condition_1 ,class: "form-control" ,placeholder: "wifiの通信状況①"%>
@@ -56,7 +56,7 @@
       <% end %>
 
       <!-- トイレ -->
-      <%= form.fields_for :toilet do |t| %>
+      <%= form.fields_for :toilets do |t| %>
       <p>トイレ</p>
       <div class="form-group col-xs-12 floating-label-form-group controls">
         <%= t.text_field :comfortable ,class: "form-control" ,placeholder: "快適度"%>
@@ -82,7 +82,7 @@
 
     <!--トラブル-->
     <br>
-    <%= form.fields_for :trouble do |tr| %>
+    <%= form.fields_for :troubles do |tr| %>
     <p>トラブル時</p>
     <div class="form-group col-xs-12 floating-label-form-group controls">
       <%= tr.text_field :atm ,class: "form-control" ,placeholder: "近くのATMは？"%>

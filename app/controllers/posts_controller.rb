@@ -15,11 +15,11 @@ class PostsController < ApplicationController
 
     if params[:back]
       @post = Post.new(post_params)
-      @post.wifis.build(post_params)
-      @post.toilets.build(post_params)
-      @post.troubles.build(post_params)
     else
       @post = Post.new
+      @post.wifis.build
+      @post.toilets.build
+      @post.troubles.build
     end
   end
 
@@ -63,11 +63,14 @@ class PostsController < ApplicationController
   end
 
   def confirm
+
     @post = Post.new(post_params)
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
-    # binding.pry
+
+    # ssbinding.pry
+
   end
 
   private
@@ -78,10 +81,11 @@ class PostsController < ApplicationController
       :user_id,
       :image,
       :cache,
+      :image_cach,
       :spot,
-      wifis_attributes: [:condition_1, :condition_2, :condition_3],
-      toilets_attributes: [:information, :comfortable, :box_number, :baggage],
-      troubles_attributes: [:atm, :station, :bus, :pharmacy]
+      wifis_attributes: [:condition_1, :condition_2, :condition_3, :post_id],
+      toilets_attributes: [:information, :comfortable, :box_number, :baggage, :post_id],
+      troubles_attributes: [:atm, :station, :bus, :pharmacy, :post_id]
     )
   end
 
