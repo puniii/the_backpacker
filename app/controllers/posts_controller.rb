@@ -4,7 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @post = Post.page(params[:page]).per(3)
+    @pages = @posts.page(params[:page]).per(3)
+    # @posts = Post.page(params[:page]).per(3)
+
     @search = Post.search(params[:q])
     @posts = @search.result
   end

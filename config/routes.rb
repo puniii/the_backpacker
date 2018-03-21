@@ -5,14 +5,10 @@ Rails.application.routes.draw do
 
   root to: 'sessions#top'
 
-  resources :contacts do
-    collection do
-    get :top
-  end
-  end
-
   resources :likes, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :contacts
   resources :users
   resources :posts do
     resources :comments
@@ -20,4 +16,6 @@ Rails.application.routes.draw do
     post :confirm
     end
   end
+
+
 end

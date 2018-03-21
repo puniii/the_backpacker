@@ -17,29 +17,49 @@
     <div class="col-lg-8 col-md-10 ">
       <div class="row control-group">
 
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <%= form.file_field :image, id: :feed_image ,placeholder: "pic"%>
-          <%= form.hidden_field :image_cache %>
-          <p class="help-block text-danger"></p>
-        </div>
-
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <%= form.text_field :content ,class: "form-control" ,placeholder: "コメントを入力してください"%>
-          <p class="help-block text-danger"></p>
-        </div>
+        <h1>
+          <i class="fa fa-map-marker fa-fw fa-1x"></i>行った場所</h1>
+        <!-- fa fa-instagram fa-fw fa-3x -->
 
         <div class="form-group col-xs-12 floating-label-form-group controls">
           <%= form.text_field :spot ,class: "form-control" ,placeholder: "どこへ行きましたか？"%>
           <p class="help-block text-danger"></p>
         </div>
+        <br>
+        <hr>
+        <br>
+
+        <h1>
+          <i class="fa fas fa-image fa-fw fa-1x"></i>この場所の写真を登録しよう</h1>
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+          <%= form.file_field :image, id: :feed_image ,placeholder: "pic"%>
+          <%= form.hidden_field :image_cache %>
+          <p class="help-block text-danger"></p>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h1>
+          <i class="fa far fa-comment fa-fw fa-1x"></i>ここはどんなところ？</h1>
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+          <%= form.text_field :content ,class: "form-control" ,placeholder: "コメントを入力してください"%>
+          <p class="help-block text-danger"></p>
+        </div>
+        <br>
+        <hr>
+        <br>
 
         <!-- wifi -->
+        <h1>
+          <i class="fa fas fa-wifi fa-fw fa-1x"></i>wifiはつながる？</h1>
         <%= form.fields_for :wifis do |w| %>
         <p>wifi</p>
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <%= w.text_field :condition_1 ,class: "form-control" ,placeholder: "wifiの通信状況①"%>
-          <p class="help-block text-danger"></p>
-          <br>
+        <div id="star">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <%= w.text_field :condition_1 ,class: "form-control" ,placeholder: "wifiの通信状況①"%>
+            <p class="help-block text-danger"></p>
+            <br>
+          </div>
         </div>
         <div class="form-group col-xs-12 floating-label-form-group controls">
           <%= w.text_field :condition_2 ,class: "form-control" ,placeholder: "wifiの通信状況②"%>
@@ -54,8 +74,13 @@
         </div>
 
       <% end %>
+      <br>
+      <hr>
+      <br>
 
       <!-- トイレ -->
+      <h1>
+        <i class="fa fas fa-male fa-fw fa-1x"></i>トイレは？</h1>
       <%= form.fields_for :toilets do |t| %>
       <p>トイレ</p>
       <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -79,8 +104,15 @@
       </div>
 
     <% end %>
+    <br>
+    <hr>
+    <br>
 
     <!--トラブル-->
+    <h1>
+      <div class ="list-inline">
+      <i class="fa fas fa-bell fa-fw fa-1x"></i>お役立ち情報</h1>
+      </div>
     <br>
     <%= form.fields_for :troubles do |tr| %>
     <p>トラブル時</p>
@@ -112,11 +144,16 @@
   <%= form.submit "Post tweet", class: 'btn btn-info' %>
   <br>
 <% end %>
-
-</div>
 <br>
 <%= link_to "back", posts_path, class: 'btn btn-default' %>
+
+</div>
+
 </div>
 
 </div>
 </div>
+
+<script>
+$('#star').raty({size: 36, starOff: '/assets/star-off.png', starOn: '/assets/star-on.png', scoreName: 'review[point]'});
+</script>

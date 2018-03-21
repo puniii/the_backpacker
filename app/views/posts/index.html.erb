@@ -14,29 +14,24 @@
 
 
           <%= f.label :spot_cont, '行った場所を検索しよう' %>
-
-            <span class="input-group-btn">
+          <div class="input-group">
             <%= f.text_field :spot_cont , class:"form-control" ,placeholder:"Search for..." ,type:"text" %>
+            <span class="input-group-btn">
             <%= f.submit 'Go',class:"btn btn-default" ,type:"submit" %>
             </span>
+          </div>
+
+            <% if @posts.blank? %>
+            <br>
+            <p>該当のspotは見つかりませんでした</p>
+            <%= link_to '行った場所を登録しませんか？', new_post_path, class: 'btn btn-info'%>
             <% end %>
 
+            <% end %>
         <br>
       </div>
       <br>
     </div>
-
-
-
-    <!-- <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><! /input-group -->
-  <!-- </div><! /.col-lg-6 -->
-<!-- </div> -->
 
 
 
@@ -60,7 +55,7 @@
           <hr>
         <% end %>
 
-<%= paginate @post %>
+<%= paginate @pages %>
       </div>
     </div>
 

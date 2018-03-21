@@ -1,0 +1,44 @@
+<%= form_with(model: contact, local: true) do |form| %>
+<% if contact.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(contact.errors.count, "error") %>
+      prohibited this contact from being saved:</h2>
+
+    <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row control-group">
+  <div class="form-group col-xs-offset-2 col-xs-8 floating-label-form-group controls">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" ,placeholder: "お名前" %>
+    <p class="help-block text-danger"></p>
+  </div>
+</div>
+
+<div class="row control-group">
+  <div class="form-group col-xs-offset-2 col-xs-8 floating-label-form-group controls">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" ,placeholder:"メールアドレス" %>
+    <p class="help-block text-danger"></p>
+  </div>
+</div>
+
+<div class="row control-group">
+  <div class="form-group col-xs-offset-2 col-xs-8 floating-label-form-group controls">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: "form-control" ,placeholder: "お問い合わせ内容" %>
+    <p class="help-block text-danger"></p>
+  </div>
+</div>
+
+<div class="actions">
+  <%= form.submit "Send" ,class:"col-xs-offset-4 col-xs-4 btn btn-default" %>
+</div>
+
+<% end %>
+</div>

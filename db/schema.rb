@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20180306132927) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.bigint "post_id"
     t.text "content"
     t.text "image"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -80,4 +80,5 @@ ActiveRecord::Schema.define(version: 20180306132927) do
     t.integer "post_id"
   end
 
+  add_foreign_key "comments", "posts"
 end
