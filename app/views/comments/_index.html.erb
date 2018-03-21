@@ -2,7 +2,18 @@
   <% comments.each do |comment| %>
     <% unless comment.id.nil? %>
       <li>
-        <%= comment.content %></p>
+        <p><%= comment.user.name %></p>
+        <p><%= comment.content %></p>
+        <p><%= comment.image %></p>
+
+        <% if logged_in_user? && comment.user == current_user %>
+        <p><%= link_to 'Delete', comment_path(comment), method: :delete %></p>
+        <% end %>
+
+        <% if logged_in_user? %>
+        <%= render 'comments/form' %>
+        <% end %>
+
       </li>
     <% end %>
   <% end %>

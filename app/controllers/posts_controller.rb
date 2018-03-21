@@ -45,8 +45,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = @post.comments.build
-    @comments = @post.comments
+    @comment = @post.comments.build(user_id: current_user.id) if current_user  
+    @comments = @post.comments.includes(:user).all
     # binding.pry
   end
 
