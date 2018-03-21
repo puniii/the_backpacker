@@ -1,20 +1,15 @@
-<ul>
+
   <% comments.each do |comment| %>
     <% unless comment.id.nil? %>
-      <li>
-        <p><%= comment.user.name %></p>
+
+      <h3 class="post-subtitle">
+        <p><%= image_tag(post.user.image , size: 30) %>
+          <%= comment.user.name %></p>
         <p><%= comment.content %></p>
-        <p><%= comment.image %></p>
 
-        <% if logged_in_user? && comment.user == current_user %>
-        <p><%= link_to 'Delete', comment_path(comment), method: :delete %></p>
+        <% if comment.user == current_user %>
+          <p><%= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
         <% end %>
-
-        <% if logged_in_user? %>
-        <%= render 'comments/form' %>
-        <% end %>
-
-      </li>
+      </h3>
     <% end %>
   <% end %>
-</ul>

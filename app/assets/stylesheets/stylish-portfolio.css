@@ -200,7 +200,6 @@ hr.small {
 
 .portfolio-item {
     margin-bottom: 30px;
-    list-style: none;
 
 }
 
@@ -237,6 +236,11 @@ footer {
     padding: 10px 0;
     margin-top: 10px;
     background-color:#D3D3D3;
+
+}
+
+li {
+  list-style: none; 
 
 }
 
