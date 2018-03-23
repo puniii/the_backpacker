@@ -224,7 +224,7 @@ hr.small {
 /* Map */
 
 #map {
-  width: 100%;
+  width: 1000px;
   height: 400px;
   background-color: grey;
 }
@@ -240,7 +240,7 @@ footer {
 }
 
 li {
-  list-style: none; 
+  list-style: none;
 
 }
 
