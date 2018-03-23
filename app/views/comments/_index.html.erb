@@ -6,6 +6,17 @@
         <p><%= image_tag(post.user.image , size: 30) %>
           <%= comment.user.name %></p>
         <p><%= comment.content %></p>
+        <div class="field" id="star">
+        <%= comment.star %>
+        </div>
+
+
+        <p><%= comment.wifi %></p>
+
+        <% if comment.image.present? %>
+          <%= image_tag(comment.image , size: 50) %>
+        <% end %>
+
 
         <% if comment.user == current_user %>
           <p><%= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
@@ -13,3 +24,12 @@
       </h3>
     <% end %>
   <% end %>
+
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: 'review[star]'
+  });
+  </script>

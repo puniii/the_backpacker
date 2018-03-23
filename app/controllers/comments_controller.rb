@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
 
-
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -14,6 +13,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to post_path(@post), notice: '投稿できませんでした' }
       end
       end
+
   end
 
 
@@ -25,6 +25,16 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:post_id, :user_id, :content, :image, :cache)
+    params.require(:comment).permit(
+      :post_id,
+      :user_id,
+      :content,
+      :image,
+      :image_cache,
+      :star,
+      :wifi,
+      :toilet,
+      :trouble
+    )
   end
 end

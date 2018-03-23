@@ -6,10 +6,10 @@ class PostsController < ApplicationController
     @posts = Post.all
     @pages = @posts.page(params[:page]).per(3)
     # @posts = Post.page(params[:page]).per(3)
-
     @search = Post.search(params[:q])
     @posts = @search.result
   end
+
 
   def new
 
@@ -69,8 +69,6 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
-
-    # ssbinding.pry
 
   end
 
