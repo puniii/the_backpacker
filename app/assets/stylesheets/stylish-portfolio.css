@@ -37,12 +37,22 @@ body {
     background-color: rgba(0,0,0,0.4);
 }
 
+.btn-danger {
+    border-radius: 0;
+    color: #fff;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
 .btn-dark:hover,
 .btn-dark:focus,
 .btn-dark:active {
     color: #fff;
     background-color: rgba(0,0,0,0.7);
 }
+
+
 
 .btn-light {
     border-radius: 0;
@@ -185,12 +195,14 @@ hr.small {
     width: 100%;
     height: 400px;
     color: #fff;
-    background: url(/assets/callout.jpg) no-repeat center center scroll;
+    background: url(/assets/aside1_m_Fotor.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 }
+
+
 
 /* Portfolio */
 
@@ -224,10 +236,11 @@ hr.small {
 /* Map */
 
 #map {
-  width: 1000px;
+  width: 100%;
   height: 400px;
   background-color: grey;
 }
+
 
 /* Footer */
 
@@ -235,7 +248,7 @@ footer {
     background: url(/assets/map_m_Fotor2.jpg) no-repeat ;
     padding: 10px 0;
     margin-top: 10px;
-    background-color:#D3D3D3;
+    /*background-color:#D3D3D3;*/
 
 }
 
