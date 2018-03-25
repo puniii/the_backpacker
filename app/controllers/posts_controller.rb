@@ -14,6 +14,9 @@ class PostsController < ApplicationController
   def new
     if params[:back]
       @post = Post.new(post_params)
+      @post.wifis.build
+      @post.toilets.build
+      @post.troubles.build
     else
       @post = Post.new
       @post.wifis.build

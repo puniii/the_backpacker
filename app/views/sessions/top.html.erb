@@ -59,12 +59,17 @@
         ここでは、最寄のATM・駅・バス停・薬局があるかを検索または新しく登録することができます。</p><br><br>
         </div>
 
+        <div class="col-xs-12 offset-2 text-center">
+          <a href="#portfolio" class="btn btn-dark btn-lg">Menu一覧</a>
+        </div>
 <hr>
 
 </div>
     </div>
   </div>
   </section>
+
+
 
 
 <!-- <section id="map" class="portfolio"> -->
@@ -78,7 +83,7 @@
     </div>
     </div>
     <div id="map"></div>
-    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfjVFYUNRpLBQbWIBnpXU7yCvb-Q91Cac&callback=initMap"></script>
+    <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=<% ENV["YOUR_API_KEY"] %>&callback=initMap"></script>
 
     <!-- /.row -->
 

@@ -6,34 +6,50 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <h3>内容確認</h3>
-      <hr>
+    <!-- <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> -->
+      <div class="col-xs-12 offset-2 text-center">
+        <div class="row control-group">
+          <h1>
+            <i class="fa far fa-check-circle fa-fw fa-2x"></i>
+            <strong>以下の内容で登録しますか？</strong>
+          </h1>
+
+
       <div class="post-preview">
         <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
         <%= form.hidden_field :content %>
         <%= form.hidden_field :spot %>
 
-        <p>行った場所 :<%= @post.spot %></p>
-        <hr>
-        <p>本文 :<%= @post.content %></p>
-
         <% if @post.image.present? %>
           <%= image_tag(@post.image.url) %>
         <% end %>
-
         <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
-        <hr>
+
+        <p class="lead">spot :<%= @post.spot %></p>
+        <hr class="small">
+
+        <p class="lead">how about this spot? :<%= @post.content %></p>
+        <hr class="small">
+
         <br>
         <%= form.fields_for :wifis do |w| %>
         <%= w.hidden_field :condition_1 %>
         <%= w.hidden_field :condition_2 %>
         <%= w.hidden_field :condition_3 %>
 
+        <h1>
+          <i class="fa fas fa-wifi fa-fw fa-2x"></i>
+          <strong>wifi情報</strong>
+        </h1>
+        <br>
+
         <% @post.wifis.each do |w| %>
-          <p>WIfi情報1 :<%= w.condition_1 %></p><hr>
-          <p>WIfi情報2 :<%= w.condition_2 %></p><hr>
-          <p>WIfi情報3 :<%= w.condition_3 %></p><hr>
+          <p class="lead">事業者名 :<%= w.condition_1 %></p>
+          <hr class="small">
+          <p class="lead">繋がりますか？ :<%= w.condition_2 %></p>
+          <hr class="small">
+          <p class="lead">詳しい情報があれば... :<%= w.condition_3 %></p>
+          <hr class="small">
         <% end %>
       <% end %>
 
@@ -43,11 +59,22 @@
       <%= t.hidden_field :box_number %>
       <%= t.hidden_field :baggage %>
 
+      <h1>
+      <i class="fa fas fa-female fa-fw fa-2x"></i>
+      <strong>toilet情報</strong>
+      </h1>
+      <br>
+
       <% @post.toilets.each do |t| %>
-        <p>トイレ情報 :<%= t.information %></p><hr>
-        <p>快適度 :<%= t.comfortable %></p><hr>
-        <p>個室の数 :<%= t.box_number %></p><hr>
-        <p>荷物が置けるか :<%= t.baggage %></p><hr>
+
+        <p class="lead">清潔ですか？ :<%= t.comfortable %></p>
+        <hr class="small">
+        <p class="lead">個室はいくつありますか？ :<%= t.box_number %></p>
+        <hr class="small">
+        <p class="lead">荷物置き場はありますか？ :<%= t.baggage %></p>
+        <hr class="small">
+        <p class="lead">コメントがあれば... :<%= t.information %></p>
+        <hr class="small">
 
       <% end %>
     <% end %>
@@ -58,28 +85,41 @@
     <%= tr.hidden_field :bus %>
     <%= tr.hidden_field :pharmacy %>
 
+    <h1>
+      <i class="fa fas fa-medkit fa-fw fa-2x"></i>
+      <strong>help情報</strong>
+    </h1>
+    <br>
+
     <% @post.troubles.each do |tr| %>
-      <p>ATM :<%= tr.atm %></p><hr>
-      <p>最寄駅 :<%= tr.station %></p><hr>
-      <p>近くのバス停 :<%= tr.bus %></p><hr>
-      <p>薬局 :<%= tr.pharmacy %></p><hr>
+      <p class="lead">近くのATMは？ :<%= tr.atm %></p>
+      <hr class="small">
+      <p class="lead">一番近い駅は？ :<%= tr.station %></p>
+      <hr class="small">
+      <p class="lead">一番近いバス停は？ :<%= tr.bus %></p>
+      <hr class="small">
+      <p class="lead">近くにドラッグストアはある？ :<%= tr.pharmacy %></p>
+      <hr class="small">
 
     <% end %>
   <% end %>
 
-  <%= form.submit "登録する" , class: 'btn btn-default' %>
+  <%= form.submit "登録する" , class: 'col-xs-offset-4 col-xs-4 btn btn-danger btn-lg' %>
 <% end %>
 
+<br>
 <%= form_with(model: @post, url: new_post_path, local: true, method: 'get') do |form| %>
 <%= form.hidden_field :content %>
+<%= form.hidden_field :spot %>
 <br>
-<%= form.submit "戻る" ,name: 'back', class: 'btn btn-default'%>
+<br>
+<%= form.submit "戻る" ,name: 'back', class: 'col-xs-offset-4 col-xs-4 btn btn-dark btn-lg'%>
 <% end %>
-</div>
-<hr>
+
 
 </div>
 </div>
 </div>
-
+</div>
+</div>
 <hr>
