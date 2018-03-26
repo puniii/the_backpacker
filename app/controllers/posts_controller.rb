@@ -1,22 +1,19 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new,:edit,:index]
+  before_action :logged_in_user, only: [:new,:edit]
 
   def index
     @posts = Post.all
-    @pages = @posts.page(params[:page]).per(3)
-    # @posts = Post.page(params[:page]).per(3)
+    # @pages = @posts.page(params[:page]).per(3)
+    # @post = Post.page(params[:page]).per(3)
     @search = Post.search(params[:q])
     @posts = @search.result
   end
 
-
   def new
     if params[:back]
       @post = Post.new(post_params)
-      @post.wifis.build
-      @post.toilets.build
-      @post.troubles.build
+
     else
       @post = Post.new
       @post.wifis.build
@@ -84,9 +81,9 @@ class PostsController < ApplicationController
       :cache,
       :image_cach,
       :spot,
-      wifis_attributes: [:condition_1, :condition_2, :condition_3, :post_id],
-      toilets_attributes: [:information, :comfortable, :box_number, :baggage, :post_id],
-      troubles_attributes: [:atm, :station, :bus, :pharmacy, :post_id]
+      wifis_attributes: [:condition_1, :condition_2, :condition_3 ],
+      toilets_attributes: [:information, :comfortable, :box_number, :baggage ],
+      troubles_attributes: [:atm, :station, :bus, :pharmacy ]
     )
   end
 

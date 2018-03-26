@@ -12,12 +12,14 @@
 <article>
     <div class="container">
       <div class="row">
-        <!-- <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> -->
-          <div class="col-xs-12 offset-2 text-center">
-          <h1><i class="fa fas fa-home fa-fw fa-2x"></i><strong>Profile</strong></h1>
-          <% if @user.image.present? %>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <!-- <div class="col-xs-12 offset-2 text-center"> -->
+          <h1><% if @user.image.present? %>
             <%= image_tag(@user.image.url,size: 100) %>
-          <hr class="small">
+          <% end %>
+          <strong>  Profile of <%= @user.name %></strong></h1>
+
+          <hr>
           <br>
           <!-- <h2 class="section-heading"></h2> -->
 
@@ -27,11 +29,13 @@
 
             <br>
             <br>
-          <% end %>
+
           <br>
-          <hr>
+          
           <h1><i class="fa far fa-thumbs-up fa-fw fa-2x"></i><strong>お気に入りspot一覧</strong></h1>
-          <hr class="small">
+          <hr>
+          <br>
+
 
           <% @likes_posts.each do |like| %>
 
@@ -39,7 +43,7 @@
             <p class="lead"><%= like.spot %></p>
             <span><%= link_to 'お気に入りを取り消す', post_path(like), class: 'btn btn-dark btn-lg'%></span>
             <br>
-            <hr class="small">
+            <hr>
 
           <% end %>
 

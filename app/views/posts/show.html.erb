@@ -1,7 +1,13 @@
 <aside class="callout">
-    <div class="text-vertical-center">
-        <h1>show?</h1>
+  <div class="text-vertical-center">
+    <h1>Let's show!</h1>
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>詳細</h2>
+      </div>
     </div>
+  </div>
+
 </aside>
 
 <article>
@@ -9,53 +15,125 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-        <h2 class="section-heading"><%= @post.spot %></h2>
-
-        <%= image_tag @post.image %>
-        <br>
         <% if current_user.id == @post.user.id %>
-          <%= link_to '編集', edit_post_path(@post.id), data: { confirm: '編集しますか？' }, class: 'btn btn-default' %>
-          <%= link_to '削除', post_path(@post.id), method: :delete ,data: { confirm: '削除しますか？' } , class: 'btn btn-default'%>
-
+          <%= link_to '編集する', edit_post_path(@post.id), data: { confirm: '編集しますか？' }, class: 'btn btn-info btn-lg' %>
+          <%= link_to '削除する', post_path(@post.id), method: :delete ,data: { confirm: '削除しますか？' } , class: 'btn btn-warning btn-lg'%>
         <% end %>
+        <br>
 
         <% unless @post.user == current_user.id %>
           <% if @like.present? %>
             <br>
-            <%= link_to 'いいね！を取り消す',like_path(post_id: @post.id), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to 'お気に入りを取り消す',like_path(post_id: @post.id), method: :delete, class: 'btn btn-dark btn-lg' %>
             <hr>
           <% else %>
             <br>
-            <%= link_to 'いいね！', likes_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
-
+            <%= link_to 'このspotをお気に入り登録する', likes_path(post_id: @post.id), method: :post, class: 'btn btn-danger btn-lg' %>
           <% end %>
         <% end %>
-        <%= @post.content %>
+        <hr>
+
+        <h1>
+          <i class="fa fas fas fa-map-marker fa-fw fa-2x"></i>
+          <strong><%= @post.spot %></strong>
+        </h1>
+
+        <br>
+        <%= image_tag @post.image %>
+        <br>
+        <br>
+
+        <p class="lead">how about this spot? :
+          <%= @post.content %></p>
+        <hr>
+        <br>
+        <h1>
+          <i class="fa fas fa-wifi fa-fw fa-2x"></i>
+          <strong>wifi情報</strong>
+        </h1>
         <% @post.wifis.each do |w| %>
-          <p>WIfi情報1 :<%= w.condition_1 %></p><hr>
-          <p>WIfi情報2 :<%= w.condition_2 %></p><hr>
-          <p>WIfi情報3 :<%= w.condition_3 %></p><hr>
+          <p class="lead">事業者名 :
+            <%= w.condition_1 %></p><hr>
+          <p class="lead">繋がりますか？ :
+            <%= w.condition_2 %></p><hr>
+          <p class="lead">詳しい情報があれば... :
+            <%= w.condition_3 %></p><hr>
         <% end %>
+        <br>
+
+        <h1>
+          <i class="fa fas fa-female fa-fw fa-2x"></i>
+          <strong>toilet情報</strong>
+        </h1>
+
         <% @post.toilets.each do |t| %>
-          <p>トイレ情報 :<%= t.information %></p><hr>
-          <p>快適度 :<%= t.comfortable %></p><hr>
-          <p>個室の数 :<%= t.box_number %></p><hr>
-          <p>荷物が置けるか :<%= t.baggage %></p><hr>
+          <p class="lead">清潔ですか？ :
+            <%= t.comfortable %></p><hr>
+          <p class="lead">個室はいくつありますか？ :
+            <%= t.box_number %></p><hr>
+          <p class="lead">荷物置き場はありますか？ :
+            <%= t.baggage %></p><hr>
+          <p class="lead">コメントがあれば... :
+            <%= t.information %></p><hr>
         <% end %>
+        <br>
+
+        <h1>
+          <i class="fa fas fa-medkit fa-fw fa-2x"></i>
+          <strong>help情報</strong>
+        </h1>
+
         <% @post.troubles.each do |tr| %>
-          <p>ATM :<%= tr.atm %></p><hr>
-          <p>最寄駅 :<%= tr.station %></p><hr>
-          <p>近くのバス停 :<%= tr.bus %></p><hr>
-          <p>薬局 :<%= tr.pharmacy %></p><hr>
+          <p class="lead">近くのATMは？ :
+            <%= tr.atm %></p><hr>
+          <p class="lead">一番近い駅は？ :
+            <%= tr.station %></p><hr>
+          <p class="lead">一番近いバス停は？ :
+            <%= tr.bus %></p><hr>
+          <p class="lead">近くにドラッグストアはある？ :
+            <%= tr.pharmacy %></p><hr>
         <% end %>
-
-        <p>コメント一覧</p>
-          <div id="comments_area">
-            <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-          </div>
-          <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
       </div>
-    </div>
-  </article>
 
-  <hr>
+
+
+      <div class="col-md-5 col-md-offset-7">
+        <div class="panel-group" id="sampleAccordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse2">
+                  <strong>コメント一覧をみる</strong>
+                </a>
+              </h3>
+            </div>
+
+            <div id="sampleAccordionCollapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+
+                <div id="comments_area">
+                  <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<br>
+      <div class="col-md-5 col-md-offset-7">
+        <p class="lead">
+          <i class="fa far fa-comments fa-fw fa-1x"></i>
+          <strong>このspotへコメントする</strong>
+        </p>
+      </div>
+
+      <div class="form-group col-md-5 col-md-offset-7 floating-label-form-group controls">
+        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<hr>

@@ -1,35 +1,39 @@
 <aside class="callout">
   <div class="text-vertical-center">
-    <h1>Confirm</h1>
+    <h1>Are you OK?</h1>
   </div>
 </aside>
 
 <div class="container">
   <div class="row">
-    <!-- <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> -->
-      <div class="col-xs-12 offset-2 text-center">
-        <div class="row control-group">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
           <h1>
             <i class="fa far fa-check-circle fa-fw fa-2x"></i>
             <strong>以下の内容で登録しますか？</strong>
           </h1>
+          <br>
 
 
-      <div class="post-preview">
+      <!-- <div class="post-preview"> -->
         <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
         <%= form.hidden_field :content %>
         <%= form.hidden_field :spot %>
 
         <% if @post.image.present? %>
           <%= image_tag(@post.image.url) %>
+          <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
+          <br>
         <% end %>
-        <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
 
-        <p class="lead">spot :<%= @post.spot %></p>
-        <hr class="small">
+        <br>
+        <br>
 
-        <p class="lead">how about this spot? :<%= @post.content %></p>
-        <hr class="small">
+        <p class="lead">spot : <%= @post.spot %></p>
+        <hr>
+
+        <p class="lead">how about this spot? : <%= @post.content %></p>
+        <hr>
 
         <br>
         <%= form.fields_for :wifis do |w| %>
@@ -44,12 +48,12 @@
         <br>
 
         <% @post.wifis.each do |w| %>
-          <p class="lead">事業者名 :<%= w.condition_1 %></p>
-          <hr class="small">
-          <p class="lead">繋がりますか？ :<%= w.condition_2 %></p>
-          <hr class="small">
-          <p class="lead">詳しい情報があれば... :<%= w.condition_3 %></p>
-          <hr class="small">
+          <p class="lead">事業者名 : <%= w.condition_1 %></p>
+          <hr>
+          <p class="lead">繋がりますか？ : <%= w.condition_2 %></p>
+          <hr>
+          <p class="lead">詳しい情報があれば... : <%= w.condition_3 %></p>
+          <hr>
         <% end %>
       <% end %>
 
@@ -67,14 +71,14 @@
 
       <% @post.toilets.each do |t| %>
 
-        <p class="lead">清潔ですか？ :<%= t.comfortable %></p>
-        <hr class="small">
-        <p class="lead">個室はいくつありますか？ :<%= t.box_number %></p>
-        <hr class="small">
-        <p class="lead">荷物置き場はありますか？ :<%= t.baggage %></p>
-        <hr class="small">
-        <p class="lead">コメントがあれば... :<%= t.information %></p>
-        <hr class="small">
+        <p class="lead">清潔ですか？ : <%= t.comfortable %></p>
+        <hr>
+        <p class="lead">個室はいくつありますか？ : <%= t.box_number %></p>
+        <hr>
+        <p class="lead">荷物置き場はありますか？ : <%= t.baggage %></p>
+        <hr>
+        <p class="lead">コメントがあれば... : <%= t.information %></p>
+        <hr>
 
       <% end %>
     <% end %>
@@ -92,14 +96,14 @@
     <br>
 
     <% @post.troubles.each do |tr| %>
-      <p class="lead">近くのATMは？ :<%= tr.atm %></p>
-      <hr class="small">
-      <p class="lead">一番近い駅は？ :<%= tr.station %></p>
-      <hr class="small">
-      <p class="lead">一番近いバス停は？ :<%= tr.bus %></p>
-      <hr class="small">
-      <p class="lead">近くにドラッグストアはある？ :<%= tr.pharmacy %></p>
-      <hr class="small">
+      <p class="lead">近くのATMは？ : <%= tr.atm %></p>
+      <hr>
+      <p class="lead">一番近い駅は？ : <%= tr.station %></p>
+      <hr>
+      <p class="lead">一番近いバス停は？ : <%= tr.bus %></p>
+      <hr>
+      <p class="lead">近くにドラッグストアはある？ : <%= tr.pharmacy %></p>
+      <hr>
 
     <% end %>
   <% end %>
@@ -111,14 +115,35 @@
 <%= form_with(model: @post, url: new_post_path, local: true, method: 'get') do |form| %>
 <%= form.hidden_field :content %>
 <%= form.hidden_field :spot %>
+
+<%= form.fields_for :wifis do |w| %>
+<%= w.hidden_field :condition_1 %>
+<%= w.hidden_field :condition_2 %>
+<%= w.hidden_field :condition_3 %>
+<% end %>
+
+<%= form.fields_for :toilets do |t| %>
+<%= t.hidden_field :information %>
+<%= t.hidden_field :comfortable %>
+<%= t.hidden_field :box_number %>
+<%= t.hidden_field :baggage %>
+<% end %>
+
+<%= form.fields_for :troubles do |tr| %>
+<%= tr.hidden_field :atm %>
+<%= tr.hidden_field :station %>
+<%= tr.hidden_field :bus %>
+<%= tr.hidden_field :pharmacy %>
+<% end %>
+
 <br>
 <br>
 <%= form.submit "戻る" ,name: 'back', class: 'col-xs-offset-4 col-xs-4 btn btn-dark btn-lg'%>
 <% end %>
 
 
-</div>
-</div>
+<!-- </div> -->
+<!-- </div> -->
 </div>
 </div>
 </div>

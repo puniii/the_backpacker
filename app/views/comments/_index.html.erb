@@ -1,35 +1,33 @@
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
 
-  <% comments.each do |comment| %>
-    <% unless comment.id.nil? %>
+    <p><%= image_tag(post.user.image , size: 30) %>
+      <%= comment.user.name %></p>
 
-      <h3 class="post-subtitle">
-        <p><%= image_tag(post.user.image , size: 30) %>
-          <%= comment.user.name %></p>
-        <p><%= comment.content %></p>
-        <div class="field" id="star">
-        <%= comment.star %>
-        </div>
+    <p>
+      <i class="fa far fa-comment fa-fw fa-1x"></i>
+      <%= comment.content %></p>
+    <p>
+      <i class="fa fas fa-wifi fa-fw fa-1x"></i>
+      <%= comment.wifi %></p>
+    <p>
+      <i class="fa fas fa-female fa-fw fa-1x"></i>
+      <%= comment.toilet %></p>
+    <p>
+      <i class="fa fas fa-medkit fa-fw fa-1x"></i>
+      <%= comment.trouble %></p>
 
-
-        <p><%= comment.wifi %></p>
-
-        <% if comment.image.present? %>
-          <%= image_tag(comment.image , size: 50) %>
-        <% end %>
-
-
-        <% if comment.user == current_user %>
-          <p><%= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
-        <% end %>
-      </h3>
+    <% if comment.image.present? %>
+      <%= image_tag(comment.image , size: 50) %>
     <% end %>
-  <% end %>
 
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    scoreName: 'review[star]'
-  });
-  </script>
+    <div class="col-md-5 col-md-offset-7 text-right">
+      <% if comment.user == current_user %>
+        <%= link_to "",post_comment_path(comment.post_id, comment.id), method: :delete, remote: true ,class: 'fa fas fa-trash fa-fw fa-2x'%>
+      <% end %>
+    </div>
+
+    <br>
+    <hr>
+  <% end %>
+<% end %>

@@ -42,6 +42,21 @@ body {
     color: #fff;
 }
 
+.btn-info {
+    border-radius: 0;
+}
+
+.btn-warning {
+    border-radius: 0;
+}
+
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
 .btn-danger:hover,
 .btn-danger:focus,
 .btn-danger:active,
@@ -272,4 +287,18 @@ li {
   position: fixed;
   bottom: 5px;
   right: 5px;
+}
+.menu1 {
+  position: relative;
+}
+.menu1 h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  text-shadow: 10px  10px 10px #ffffff;
+  margin:0;
+  padding:0;
 }

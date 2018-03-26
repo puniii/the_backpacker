@@ -1,66 +1,92 @@
 <aside class="callout">
     <div class="text-vertical-center">
         <h1>Index</h1>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2>みんなの投稿をみる</h2>
+          </div>
+        </div>
     </div>
 </aside>
 
+<!-- <p><%= notice %></p> -->
 <div class="container">
-  <p><%= notice %></p>
   <div class="row">
+
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div class="post-preview">
-        <h1>Listing topics</h1>
+
+        <h1>
+          <i class="fa fas fa-search fa-fw fa-2x"></i>
+          <strong>検索する</strong>
+        </h1>
         <%= search_form_for @search do |f| %>
 
-
-          <%= f.label :spot_cont, '行った場所を検索しよう' %>
+          <p class="lead">行った場所を検索しよう</p>
           <div class="input-group">
-            <%= f.text_field :spot_cont , class:"form-control" ,placeholder:"Search for..." ,type:"text" %>
+            <%= f.text_field :spot_cont , class:"form-control" ,placeholder:"Search spot!" ,type:"text" %>
             <span class="input-group-btn">
-            <%= f.submit 'Go',class:"btn btn-default" ,type:"submit" %>
+            <%= f.submit 'Go',class:"btn btn-danger" ,type:"submit" %>
             </span>
           </div>
 
             <% if @posts.blank? %>
             <br>
-            <p>該当のspotは見つかりませんでした</p>
-            <%= link_to '行った場所を登録しませんか？', new_post_path, class: 'btn btn-info'%>
+            <p>お探しのspotは見つかりませんでした</p>
+            <%= link_to '行った場所を登録しませんか？', new_post_path, class: 'btn btn-dark btn-lg'%>
             <% end %>
-
             <% end %>
         <br>
-      </div>
+      <br>
       <br>
     </div>
 
 
+
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div class="post-preview">
-        <% @posts.each do |post| %>
-          <p class="post-meta"><%= image_tag(post.user.image , size: 30) %>
-            <%= post.user.name %></p>
-          <h2 class="post-title">
-            <%= post.spot %>
-          </h2>
-          <h3 class="post-subtitle">
-            <% if post.image.present? %>
-              <%= image_tag(post.image , size: 50) %>
-            <% end %>
-          </h3>
-          <p class="post-meta">投稿日<%= post.created_at %></p>
-          <br>
-          <%= link_to '続きを見る', post_path(post.id), class: 'btn btn-default'%>
-
-          <hr>
-        <% end %>
-
-<%= paginate @pages %>
-      </div>
+      <h1>
+        <i class="fa fas fa-desktop fa-fw fa-2x"></i>
+        <strong>投稿一覧</strong>
+      </h1>
     </div>
 
 
-    <%= link_to 'New tweet!', new_post_path, class: 'btn btn-info'%>
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2">
+      <br>
+      <br>
+
+      <div class="panel-group" id="sampleAccordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse2">
+                <strong>click!</strong>
+              </a>
+            </h3>
+          </div>
+
+          <div id="sampleAccordionCollapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+
+              <% @posts.each do |post| %>
+                <p class="post-meta"><%= image_tag(post.user.image , size: 30) %>
+                  <%= post.user.name %></p>
+                <h2>
+                  <i class="fa fas fas fa-map-marker fa-fw fa-1x"></i><%= post.spot %>
+                </h2>
+                <% if post.image.present? %>
+                  <%= image_tag(post.image , size: 50) %>
+                <% end %>
+                <p class="post-meta">投稿日<%= post.created_at %></p>
+                <br>
+                <%= link_to '続きを見る', post_path(post.id), class: 'btn btn-dark'%>
+                <hr>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-
-<hr>
