@@ -35,10 +35,6 @@ class PostsController < ApplicationController
       end
     end
 
-    if params[:cache][:image].present?
-      @post.image.retrieve_from_cache! params[:cache][:image]
-      @post.save!
-    end
   end
 
   def show
