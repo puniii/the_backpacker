@@ -21,17 +21,12 @@
     <!-- Custom CSS -->
     <link href="css/stylish-portfolio.css" rel="stylesheet">
 
-    <!-- <script async defer
-     src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY&callback=initMap">
-    </script> -->
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=YOUR_API_KEY&callback=initMap"> </script> -->
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <!-- This stylesheet contains specific styles for displaying the map
-         on this page. Replace it with your own styles as described in the
-         documentation:
-         https://developers.google.com/maps/documentation/javascript/tutorial -->
+    <!-- This stylesheet contains specific styles for displaying the map on this page. Replace it with your own styles as described in the documentation: https://developers.google.com/maps/documentation/javascript/tutorial -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
@@ -48,32 +43,32 @@
           <i class="fa fa-times"></i>
         </a>
         <li class="sidebar-brand">
-          <a href="/" onclick="$("#menu-close").click();">the traveler</a>
+          <a href="/" onclick="$(" #menu-close").click();"="#menu-close").click();"">the traveler</a>
         </li>
         <li>
-          <a href="/contacts/new" onclick="$("#menu-close").click();">サポート</a>
+          <a href="/contacts/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">サポート</a>
         </li>
 
         <% if logged_in? %>
-        <li>
-          <a href="/posts" onclick="$("#menu-close").click();">投稿一覧</a>
-        </li>
-        <li>
-          <a href="/posts/new" onclick="$("#menu-close").click();">投稿する</a>
-        </li>
-        <li>
-          <a onclick="$("#menu-close").click();"><%= link_to "プロフィール", user_path(current_user.id) %></a>
-        </li>
-        <li>
-          <a onclick="$("#menu-close").click();"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></a>
-        </li>
+          <li>
+            <a href="/posts" onclick="$(" #menu-close").click();"="#menu-close").click();"">投稿一覧</a>
+          </li>
+          <li>
+            <a href="/posts/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">投稿する</a>
+          </li>
+          <li>
+            <a onclick="$(" #menu-close").click();"="#menu-close").click();""><%= link_to "プロフィール", user_path(current_user.id) %></a>
+          </li>
+          <li>
+            <a onclick="$(" #menu-close").click();"="#menu-close").click();""><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></a>
+          </li>
         <% else %>
-        <li>
-          <a href="/sessions/new" onclick="$("#menu-close").click();">ログイン</a>
-        </li>
-        <li>
-          <a href="/users/new" onclick="$("#menu-close").click();">サインアップ</a>
-        </li>
+          <li>
+            <a href="/sessions/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">ログイン</a>
+          </li>
+          <li>
+            <a href="/users/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">サインアップ</a>
+          </li>
         <% end %>
 
       </ul>
@@ -85,7 +80,61 @@
     </div>
     <%= yield %>
 
+    <br>
+    <br>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 text-center">
+          <h2>Menu</h2>
+          <hr class="small">
+          <article>
+            <div class="contents">
+
+              <ul class="row">
+                <li class="col-md-3">
+                  <div class="menu1">
+                    <a href="/posts/new">
+                      <img class="img-portfolio img-responsive" src="/assets/menu1_s_Fotor.jpg">
+                    </a>
+                    <h1>New Post</h1>
+                  </div>
+                </li>
+
+                <li class="col-md-3">
+                  <div class="menu1">
+                    <a href="/posts">
+                      <img class="img-portfolio img-responsive" src="/assets/menu2_s_Fotor.jpg">
+                    </a>
+                    <h1>Index</h1>
+                  </div>
+                </li>
+
+                <li class="col-md-3">
+                  <div class="menu1">
+                    <a href="/contacts/new">
+                      <img class="img-portfolio img-responsive" src="/assets/menu3_s_Fotor.jpg">
+                    </a>
+                    <h1>Support</h1>
+                  </div>
+                </li>
+
+                <li class="col-md-3">
+                  <div class="menu1">
+                    <a href="/">
+                      <img class="img-portfolio img-responsive" src="/assets/menu4_s_Fotor.jpg">
+                    </a>
+                    <h1>Top</h1>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="container">
@@ -95,15 +144,6 @@
               <strong>the travelers</strong>
             </h4>
             <p>2018/03</p>
-            <!-- <ul class="list-unstyled">
-              <li>
-                <i class="fa fa-phone fa-fw"></i>
-                **-****-****</li>
-              <li>
-                <i class="fa fa-instagram fa-fw fa-3x"></i>
-
-              </li>
-            </ul> -->
             <br>
             <ul class="list-inline">
               <li>
@@ -122,9 +162,9 @@
         </div>
       </div>
 
-    <a id="to-top" href="#top" class="btn btn-dark btn-lg">
-      <i class="fa fa-chevron-up fa-fw fa-1x"></i>
-    </a>
+      <a id="to-top" href="#top" class="btn btn-dark btn-lg">
+        <i class="fa fa-chevron-up fa-fw fa-1x"></i>
+      </a>
     </footer>
 
     <!-- jQuery -->
@@ -182,24 +222,10 @@
           }
         }
       });
-      // Disable Google Maps scrolling See http://stackoverflow.com/a/25904582/1607849 Disable scroll zooming and bind back the click event
-      // var onMapMouseleaveHandler = function (event) {
-      //   var that = $(this);
-      //   that.on('click', onMapClickHandler);
-      //   that.off('mouseleave', onMapMouseleaveHandler);
-      //   that.find('iframe').css("pointer-events", "none");
-      // }
-      // var onMapClickHandler = function (event) {
-      //   var that = $(this);
-      //   // Disable the click handler until the user leaves the map area
-      //   that.off('click', onMapClickHandler);
-      //   // Enable scrolling zoom
-      //   that.find('iframe').css("pointer-events", "auto");
-      //   // Handle the mouse leave event
-      //   that.on('mouseleave', onMapMouseleaveHandler);
-      // }
-      // // Enable map zooming with mouse scroll when the user clicks the map
-      // $('.map').on('click', onMapClickHandler);
+      // Disable Google Maps scrolling See http://stackoverflow.com/a/25904582/1607849 Disable scroll zooming and bind back the click event var onMapMouseleaveHandler = function (event) {   var that = $(this);   that.on('click', onMapClickHandler);
+      // that.off('mouseleave', onMapMouseleaveHandler);   that.find('iframe').css("pointer-events", "none"); } var onMapClickHandler = function (event) {   var that = $(this);    Disable the click handler until the user leaves the map area
+      // that.off('click', onMapClickHandler);    Enable scrolling zoom   that.find('iframe').css("pointer-events", "auto");    Handle the mouse leave event   that.on('mouseleave', onMapMouseleaveHandler); }  Enable map zooming with mouse scroll when the
+      // user clicks the map $('.map').on('click', onMapClickHandler);
     </script>
   </body>
 </html>

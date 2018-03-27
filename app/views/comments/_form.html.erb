@@ -1,25 +1,26 @@
 <%= form_with(model: [post, comment]) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-      <ul>
+<% if comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(comment.errors.count, "error") %>
+      prohibited this comment from being saved:</h2>
+    <ul>
       <% comment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </ul>
+  </div>
+<% end %>
 
-    <%= form.text_area :content ,class: "form-control" ,placeholder: "この投稿へのコメント"%>
-    <br>
-    <%= form.file_field :image, id: :feed_image %>
-    <%= form.hidden_field :image_cache %>
-    <br>
-    <%= form.text_area :wifi ,class: "form-control" ,placeholder: "wifi情報について"%>
-    <br>
-    <%= form.text_area :toilet ,class: "form-control" ,placeholder: "toilet情報について"%>
-    <br>
-    <%= form.text_area :trouble ,class: "form-control" ,placeholder: "help情報について"%>
-    <br>
-    <%= form.submit "登録する" , class: 'col-xs-offset-4 col-xs-4 btn btn-danger'%>
-  <% end %>
+<%= form.text_area :content ,class: "form-control" ,placeholder: "この投稿へのコメント"%>
+<br>
+<%= form.file_field :image, id: :feed_image %>
+<%= form.hidden_field :image_cache %>
+<br>
+<%= form.text_area :wifi ,class: "form-control" ,placeholder: "wifi情報について"%>
+<br>
+<%= form.text_area :toilet ,class: "form-control" ,placeholder: "toilet情報について"%>
+<br>
+<%= form.text_area :trouble ,class: "form-control" ,placeholder: "help情報について"%>
+<br>
+<%= form.submit "登録する" , class: 'col-xs-offset-4 col-xs-4 btn btn-danger'%>
+<% end %>

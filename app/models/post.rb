@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes, source: :user
@@ -14,7 +15,7 @@ class Post < ApplicationRecord
 
 
   validates :content, presence: true
-  validates :content,length:{maximum:200}
-  # validates :spot, presence: true
+  validates :content,length:{maximum:500}
+  validates :spot, presence: true
   mount_uploader :image, ImageUploader
 end

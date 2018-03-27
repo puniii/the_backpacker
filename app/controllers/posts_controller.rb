@@ -4,8 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    # @pages = @posts.page(params[:page]).per(3)
-    # @post = Post.page(params[:page]).per(3)
     @search = Post.search(params[:q])
     @posts = @search.result
   end
@@ -46,7 +44,6 @@ class PostsController < ApplicationController
   def show
     @comment = @post.comments.build
     @comments = @post.comments
-    # binding.pry
   end
 
   def edit
@@ -54,21 +51,19 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    redirect_to posts_path, notice: 'つぶやきを編集しました！'
+    redirect_to posts_path, notice: '編集しました！'
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: 'つぶやきを削除しました！'
+    redirect_to posts_path, notice: '削除しました！'
   end
 
   def confirm
-
     @post = Post.new(post_params)
     @post.user_id = current_user.id
 
     render :new if @post.invalid?
-
   end
 
   private

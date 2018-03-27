@@ -8,107 +8,118 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-          <h1>
-            <i class="fa far fa-check-circle fa-fw fa-2x"></i>
-            <strong>以下の内容で登録しますか？</strong>
-          </h1>
-          <br>
-
-
-      <!-- <div class="post-preview"> -->
-        <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
-        <%= form.hidden_field :content %>
-        <%= form.hidden_field :spot %>
-
-        <% if @post.image.present? %>
-          <%= image_tag(@post.image.url) %>
-          <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
-          <br>
-        <% end %>
-
-        <br>
-        <br>
-
-        <p class="lead">spot : <%= @post.spot %></p>
-        <hr>
-
-        <p class="lead">how about this spot? : <%= @post.content %></p>
-        <hr>
-
-        <br>
-        <%= form.fields_for :wifis do |w| %>
-        <%= w.hidden_field :condition_1 %>
-        <%= w.hidden_field :condition_2 %>
-        <%= w.hidden_field :condition_3 %>
-
-        <h1>
-          <i class="fa fas fa-wifi fa-fw fa-2x"></i>
-          <strong>wifi情報</strong>
-        </h1>
-        <br>
-
-        <% @post.wifis.each do |w| %>
-          <p class="lead">事業者名 : <%= w.condition_1 %></p>
-          <hr>
-          <p class="lead">繋がりますか？ : <%= w.condition_2 %></p>
-          <hr>
-          <p class="lead">詳しい情報があれば... : <%= w.condition_3 %></p>
-          <hr>
-        <% end %>
-      <% end %>
-
-      <%= form.fields_for :toilets do |t| %>
-      <%= t.hidden_field :information %>
-      <%= t.hidden_field :comfortable %>
-      <%= t.hidden_field :box_number %>
-      <%= t.hidden_field :baggage %>
-
       <h1>
-      <i class="fa fas fa-female fa-fw fa-2x"></i>
-      <strong>toilet情報</strong>
+        <i class="fa far fa-check-circle fa-fw fa-2x"></i>
+        <strong>以下の内容で登録しますか？</strong>
       </h1>
       <br>
 
-      <% @post.toilets.each do |t| %>
+      <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+      <%= form.hidden_field :content %>
+      <%= form.hidden_field :spot %>
 
-        <p class="lead">清潔ですか？ : <%= t.comfortable %></p>
-        <hr>
-        <p class="lead">個室はいくつありますか？ : <%= t.box_number %></p>
-        <hr>
-        <p class="lead">荷物置き場はありますか？ : <%= t.baggage %></p>
-        <hr>
-        <p class="lead">コメントがあれば... : <%= t.information %></p>
-        <hr>
+      <% if @post.image.present? %>
+        <%= image_tag(@post.image.url) %>
+        <%= hidden_field_tag :"cache[image]",@post.image.cache_name %>
+        <br>
+      <% end %>
 
+      <br>
+      <br>
+
+      <p class="lead">spot :
+        <%= @post.spot %></p>
+      <hr>
+
+      <p class="lead">how about this spot? :
+        <%= @post.content %></p>
+      <hr>
+
+      <br>
+      <%= form.fields_for :wifis do |w| %>
+      <%= w.hidden_field :condition_1 %>
+      <%= w.hidden_field :condition_2 %>
+      <%= w.hidden_field :condition_3 %>
+
+      <h1>
+        <i class="fa fas fa-wifi fa-fw fa-2x"></i>
+        <strong>wifi情報</strong>
+      </h1>
+      <br>
+
+      <% @post.wifis.each do |w| %>
+        <p class="lead">事業者名 :
+          <%= w.condition_1 %></p>
+        <hr>
+        <p class="lead">繋がりますか？ :
+          <%= w.condition_2 %></p>
+        <hr>
+        <p class="lead">詳しい情報があれば... :
+          <%= w.condition_3 %></p>
+        <hr>
       <% end %>
     <% end %>
 
-    <%= form.fields_for :troubles do |tr| %>
-    <%= tr.hidden_field :atm %>
-    <%= tr.hidden_field :station %>
-    <%= tr.hidden_field :bus %>
-    <%= tr.hidden_field :pharmacy %>
+    <%= form.fields_for :toilets do |t| %>
+    <%= t.hidden_field :information %>
+    <%= t.hidden_field :comfortable %>
+    <%= t.hidden_field :box_number %>
+    <%= t.hidden_field :baggage %>
 
     <h1>
-      <i class="fa fas fa-medkit fa-fw fa-2x"></i>
-      <strong>help情報</strong>
+      <i class="fa fas fa-female fa-fw fa-2x"></i>
+      <strong>toilet情報</strong>
     </h1>
     <br>
 
-    <% @post.troubles.each do |tr| %>
-      <p class="lead">近くのATMは？ : <%= tr.atm %></p>
+    <% @post.toilets.each do |t| %>
+
+      <p class="lead">清潔ですか？ :
+        <%= t.comfortable %></p>
       <hr>
-      <p class="lead">一番近い駅は？ : <%= tr.station %></p>
+      <p class="lead">個室はいくつありますか？ :
+        <%= t.box_number %></p>
       <hr>
-      <p class="lead">一番近いバス停は？ : <%= tr.bus %></p>
+      <p class="lead">荷物置き場はありますか？ :
+        <%= t.baggage %></p>
       <hr>
-      <p class="lead">近くにドラッグストアはある？ : <%= tr.pharmacy %></p>
+      <p class="lead">コメントがあれば... :
+        <%= t.information %></p>
       <hr>
 
     <% end %>
   <% end %>
 
-  <%= form.submit "登録する" , class: 'col-xs-offset-4 col-xs-4 btn btn-danger btn-lg' %>
+  <%= form.fields_for :troubles do |tr| %>
+  <%= tr.hidden_field :atm %>
+  <%= tr.hidden_field :station %>
+  <%= tr.hidden_field :bus %>
+  <%= tr.hidden_field :pharmacy %>
+
+  <h1>
+    <i class="fa fas fa-medkit fa-fw fa-2x"></i>
+    <strong>help情報</strong>
+  </h1>
+  <br>
+
+  <% @post.troubles.each do |tr| %>
+    <p class="lead">近くのATMは？ :
+      <%= tr.atm %></p>
+    <hr>
+    <p class="lead">一番近い駅は？ :
+      <%= tr.station %></p>
+    <hr>
+    <p class="lead">一番近いバス停は？ :
+      <%= tr.bus %></p>
+    <hr>
+    <p class="lead">近くにドラッグストアはある？ :
+      <%= tr.pharmacy %></p>
+    <hr>
+
+  <% end %>
+<% end %>
+
+<%= form.submit "登録する" , class: 'col-xs-offset-4 col-xs-4 btn btn-danger btn-lg' %>
 <% end %>
 
 <br>
@@ -141,9 +152,6 @@
 <%= form.submit "戻る" ,name: 'back', class: 'col-xs-offset-4 col-xs-4 btn btn-dark btn-lg'%>
 <% end %>
 
-
-<!-- </div> -->
-<!-- </div> -->
 </div>
 </div>
 </div>

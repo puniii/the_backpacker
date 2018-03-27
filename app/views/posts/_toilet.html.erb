@@ -1,0 +1,41 @@
+<div class="row control-group">
+
+  <%= form.fields_for :toilets do |t| %>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <h1>
+      <i class="fa fas fa-female fa-fw fa-2x"></i>
+      <strong>toilet情報</strong>
+    </h1>
+
+    <p class="lead">清潔ですか？
+      <%= t.text_field :comfortable ,class: "form-control" ,placeholder: "快適度"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">個室はいくつありますか？
+      <%= t.text_field :box_number,class: "form-control" ,placeholder: "個室の数"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">荷物置き場はありますか？
+      <%= t.text_field :baggage,class: "form-control" ,placeholder: "荷物スペース"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">コメントがあれば記入してください
+      <%= t.text_field :information,class: "form-control" ,placeholder: "その他"%>
+    </p>
+  </div>
+
+<% end %>
+<br>
+<br>
+</div>
+<hr>

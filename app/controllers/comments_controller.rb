@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
-
+  
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
-
 
     respond_to do |format|
       if @comment.save
@@ -12,16 +11,12 @@ class CommentsController < ApplicationController
       else
         format.html { redirect_to post_path(@post), notice: '投稿できませんでした' }
       end
-      end
-
+    end
   end
-
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-       render :index
-    end
+    render :index if @comment.destroy
   end
 
   def comment_params
@@ -31,7 +26,6 @@ class CommentsController < ApplicationController
       :content,
       :image,
       :image_cache,
-      :star,
       :wifi,
       :toilet,
       :trouble

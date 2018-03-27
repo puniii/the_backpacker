@@ -1,0 +1,35 @@
+<div class="row control-group">
+
+  <%= form.fields_for :wifis do |w| %>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <h1>
+      <i class="fa fas fa-wifi fa-fw fa-2x"></i>
+      <strong>wifi情報</strong>
+    </h1>
+
+    <p class="lead">事業者名
+      <%= w.text_field :condition_1 ,class: "form-control" ,placeholder: "wifiの事業者名"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">繋がりますか？
+      <%= w.text_field :condition_2 ,class: "form-control" ,placeholder: "通信状況"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">詳しい情報があれば記入してください
+      <%= w.text_field :condition_3 ,class: "form-control" ,placeholder: "詳細情報"%>
+    </p>
+    <br>
+  </div>
+
+<% end %>
+<br>
+<br>
+</div>
+<hr>

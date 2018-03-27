@@ -4,13 +4,13 @@ class LikesController < ApplicationController
 
 def create
   like = current_user.likes.create(post_id: params[:post_id])
-  redirect_to posts_path, notice: "いいね！しました"
+  redirect_to posts_path, notice: "お気に入りしました"
 end
 
 
 def destroy
   like = current_user.likes.find_by(post_id: params[:post_id]).destroy
-  redirect_to post_path, notice: "いいね！を取り消ししました"
+  redirect_to post_path, notice: "お気に入りを取り消しました"
 end
 
 private

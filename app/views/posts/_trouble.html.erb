@@ -1,0 +1,42 @@
+<div class="row control-group">
+
+  <%= form.fields_for :troubles do |tr| %>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <h1>
+      <i class="fa fas fa-medkit fa-fw fa-2x"></i>
+      <strong>help情報</strong>
+    </h1>
+
+    <p class="lead">近くのATMは？
+      <%= tr.text_field :atm ,class: "form-control" ,placeholder: "ATM"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">一番近い駅は？
+      <%= tr.text_field :station ,class: "form-control" ,placeholder: "最寄駅"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">一番近いバス停は？
+      <%= tr.text_field :bus ,class: "form-control" ,placeholder: "最寄の停留所"%>
+    </p>
+    <br>
+  </div>
+
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+    <p class="lead">近くにドラッグストアはある？
+      <%= tr.text_field :pharmacy ,class: "form-control" ,placeholder: "ドラッグストア・薬局"%>
+    </p>
+    <br>
+  </div>
+
+<% end %>
+<br>
+<br>
+</div>
+<hr>

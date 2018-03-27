@@ -11,7 +11,6 @@
   </div>
 <% end %>
 
-<!-- Main Content -->
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 ">
@@ -51,139 +50,22 @@
       <hr>
 
       <!-- wifi -->
-      <div class="row control-group">
+      <%= render partial: 'wifi', locals: {form: form} %>
 
-        <%= form.fields_for :wifis do |w| %>
+      <!-- トイレ -->
+      <%= render partial: 'toilet', locals: {form: form} %>
 
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <h1>
-            <i class="fa fas fa-wifi fa-fw fa-2x"></i>
-            <strong>wifi情報</strong>
-          </h1>
+      <!--トラブル-->
+      <%= render partial: 'trouble', locals: {form: form} %>
 
-          <p class="lead">事業者名
-            <%= w.text_field :condition_1 ,class: "form-control" ,placeholder: "wifiの事業者名"%>
-          </p>
-          <br>
-        </div>
-
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <p class="lead">繋がりますか？
-            <%= w.text_field :condition_2 ,class: "form-control" ,placeholder: "通信状況"%>
-          </p>
-          <br>
-        </div>
-
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <p class="lead">詳しい情報があれば記入してください
-            <%= w.text_field :condition_3 ,class: "form-control" ,placeholder: "詳細情報"%>
-          </p>
-          <br>
-        </div>
-
-      <% end %>
+      <%= form.submit "登録する", class: 'col-xs-offset-4 col-xs-4 btn btn-danger btn-lg' %>
       <br>
-      <br>
-    </div>
-    <hr>
-
-    <!-- トイレ -->
-    <div class="row control-group">
-
-      <%= form.fields_for :toilets do |t| %>
-
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        <h1>
-          <i class="fa fas fa-female fa-fw fa-2x"></i>
-          <strong>toilet情報</strong>
-        </h1>
-
-        <p class="lead">清潔ですか？
-          <%= t.text_field :comfortable ,class: "form-control" ,placeholder: "快適度"%>
-        </p>
-        <br>
-      </div>
-
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        <p class="lead">個室はいくつありますか？
-          <%= t.text_field :box_number,class: "form-control" ,placeholder: "個室の数"%>
-        </p>
-        <br>
-      </div>
-
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        <p class="lead">荷物置き場はありますか？
-          <%= t.text_field :baggage,class: "form-control" ,placeholder: "荷物スペース"%>
-        </p>
-        <br>
-      </div>
-
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        <p class="lead">コメントがあれば記入してください
-          <%= t.text_field :information,class: "form-control" ,placeholder: "その他"%>
-        </p>
-      </div>
-
     <% end %>
     <br>
     <br>
+    <%= link_to "一覧画面へ戻る", posts_path, class: 'col-xs-offset-4 col-xs-4 btn btn-dark btn-lg' %>
+
   </div>
-  <hr>
-
-  <!--トラブル-->
-  <div class="row control-group">
-
-    <%= form.fields_for :troubles do |tr| %>
-
-    <div class="form-group col-xs-12 floating-label-form-group controls">
-      <h1>
-        <i class="fa fas fa-medkit fa-fw fa-2x"></i>
-        <strong>help情報</strong>
-      </h1>
-
-      <p class="lead">近くのATMは？
-        <%= tr.text_field :atm ,class: "form-control" ,placeholder: "ATM"%>
-      </p>
-      <br>
-    </div>
-
-    <div class="form-group col-xs-12 floating-label-form-group controls">
-      <p class="lead">一番近い駅は？
-        <%= tr.text_field :station ,class: "form-control" ,placeholder: "最寄駅"%>
-      </p>
-      <br>
-    </div>
-
-    <div class="form-group col-xs-12 floating-label-form-group controls">
-      <p class="lead">一番近いバス停は？
-        <%= tr.text_field :bus ,class: "form-control" ,placeholder: "最寄の停留所"%>
-      </p>
-      <br>
-    </div>
-
-    <div class="form-group col-xs-12 floating-label-form-group controls">
-      <p class="lead">近くにドラッグストアはある？
-        <%= tr.text_field :pharmacy ,class: "form-control" ,placeholder: "ドラッグストア・薬局"%>
-      </p>
-      <br>
-    </div>
-
-  <% end %>
-  <br>
-  <br>
-</div>
-<hr>
-
-<%= form.submit "登録する", class: 'col-xs-offset-4 col-xs-4 btn btn-danger btn-lg' %>
-<br>
-<% end %>
-<br>
-<br>
-<%= link_to "一覧画面へ戻る", posts_path, class: 'col-xs-offset-4 col-xs-4 btn btn-dark btn-lg' %>
-
 </div>
 </div>
 </div>
-</div>
-
-<!-- <script> $('#star').raty({size: 36, starOff: '/assets/star-off.png', starOn: '/assets/star-on.png', scoreName: 'review[point]'}); </script> -->
