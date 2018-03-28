@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <h1><% if @user.image.present? %>
-            <%= image_tag(@user.image.url,size: 100) %>
+            <%= image_tag(@user.image.url) %>
           <% end %>
           <strong>  Profile of <%= @user.name %></strong></h1>
 
