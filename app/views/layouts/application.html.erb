@@ -79,62 +79,9 @@
       <% end %>
     </div>
     <%= yield %>
-
     <br>
     <br>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 col-lg-offset-1 text-center">
-          <h2>Menu</h2>
-          <hr class="small">
-          <article>
-            <div class="contents">
-
-              <ul class="row">
-                <li class="col-md-3">
-                  <div class="menu1">
-                    <a href="/posts/new">
-                      <img class="img-portfolio img-responsive" src="/assets/menu1_s_Fotor.jpg">
-                    </a>
-                    <h1>New Post</h1>
-                  </div>
-                </li>
-
-                <li class="col-md-3">
-                  <div class="menu1">
-                    <a href="/posts">
-                      <img class="img-portfolio img-responsive" src="/assets/menu2_s_Fotor.jpg">
-                    </a>
-                    <h1>Index</h1>
-                  </div>
-                </li>
-
-                <li class="col-md-3">
-                  <div class="menu1">
-                    <a href="/contacts/new">
-                      <img class="img-portfolio img-responsive" src="/assets/menu3_s_Fotor.jpg">
-                    </a>
-                    <h1>Support</h1>
-                  </div>
-                </li>
-
-                <li class="col-md-3">
-                  <div class="menu1">
-                    <a href="/">
-                      <img class="img-portfolio img-responsive" src="/assets/menu4_s_Fotor.jpg">
-                    </a>
-                    <h1>Top</h1>
-                  </div>
-                </li>
-
-              </ul>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </div>
 
     <footer>
       <div class="container">
@@ -146,16 +93,32 @@
             <p>2018/03</p>
             <br>
             <ul class="list-inline">
+              <% if logged_in? %>
               <li>
-                <a href="/contacts/new">
-                  <i class="fa far fa-envelope fa-3x"></i>
+                <a>
+                <i class="fa fas fa-user-circle fa-fw fa-3x"></i>
+              <%= link_to "プロフィール", user_path(current_user.id) %>
+              </a>
+              </li>
+              <% end %>
+
+              <li>
+                <a href="/posts/new">
+                  <i class="fa fas fa-paste fa-fw fa-3x"></i>新規投稿
                 </a>
               </li>
               <li>
                 <a href="/posts">
-                  <i class="fa fa-dribbble fa-fw fa-3x"></i>
+                  <i class="fa fas fa-list fa-fw fa-3x"></i>投稿一覧
                 </a>
               </li>
+
+              <li>
+                <a href="/">
+                  <i class="fa fa-dribbble fa-fw fa-3x"></i>トップへ戻る
+                </a>
+              </li>
+
             </ul>
             <p class="text-muted">Copyright &copy; the travelers 2018</p>
           </div>

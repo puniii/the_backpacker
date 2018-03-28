@@ -26,8 +26,9 @@
           <p class="lead"><i class="fa fab fa-angellist fa-fw fa-2x"></i>：<%= @user.introduction %></p>
 
             <br>
-            <br>
 
+            <%= link_to 'プロフィールを編集する', edit_user_path(@user.id), data: { confirm: '編集しますか？' }, class: 'btn btn-info btn-lg' %>
+          <br>
           <br>
 
           <h1><i class="fa far fa-thumbs-up fa-fw fa-2x"></i><strong>お気に入りspot一覧</strong></h1>
@@ -37,13 +38,14 @@
 
           <% @likes_posts.each do |like| %>
 
-            <p class="lead"><%= image_tag(@user.image , size: 30) %><%= like.user.name %></p>
+            <p class="lead"><%= image_tag(like.user.image , size: 30) %><%= like.user.name %></p>
             <p class="lead"><%= like.spot %></p>
             <span><%= link_to 'お気に入りを取り消す', post_path(like) , method: :delete,class: 'btn btn-dark btn-lg'%></span>
             <br>
             <hr>
 
           <% end %>
+
 
         </div>
       </div>

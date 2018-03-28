@@ -19,6 +19,10 @@
           <strong>検索する</strong>
         </h1>
         <%= search_form_for @search do |f| %>
+        <% if @search.present? %>
+        <p class="lead"><%= @posts.count %>件見つかりました</p>
+        <% end %>
+
 
           <p class="lead">行った場所を検索しよう</p>
           <div class="input-group">
