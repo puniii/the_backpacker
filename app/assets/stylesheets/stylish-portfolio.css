@@ -262,6 +262,11 @@ hr.small {
   background-color: grey;
 }
 
+.comment {
+  font-size: 20px;
+  color: red;
+}
+
 
 /* Footer */
 

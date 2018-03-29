@@ -79,7 +79,8 @@
                 <% if post.image.present? %>
                   <%= image_tag(post.image , size: 50) %>
                 <% end %>
-                <p class="post-meta">投稿日<%= post.created_at %></p>
+                <p class="post-meta">投稿日<%= post.created_at.strftime("%Y-%m-%d%H:%M") %></p>
+                <%= post.created_at.strftime("%Y-%m-%d%H:%M") %>
                 <br>
                 <%= link_to '続きを見る', post_path(post.id), class: 'btn btn-dark'%>
                 <hr>
