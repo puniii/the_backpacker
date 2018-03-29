@@ -1,5 +1,6 @@
-
+<p class="lead"><%= comments.count %>件のコメント</p>
 <% comments.each do |comment| %>
+
   <% unless comment.id.nil? %>
 
     <p><%= image_tag(post.user.image , size: 30) %>

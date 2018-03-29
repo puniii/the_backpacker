@@ -9,7 +9,12 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = Contact.new
+    if logged_in?
+      @contact =
+    else
+      @contact = Contact.new
+    end
+
   end
 
   def edit
