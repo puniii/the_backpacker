@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
 
   def new
     if logged_in?
-      @contact = Contact.new(name:current_user.name, email:current_user.email)
+      @contact = Contact.new(name: current_user.name, email: current_user.email)
     else
       @contact = Contact.new
     end

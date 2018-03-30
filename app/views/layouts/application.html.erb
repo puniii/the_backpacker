@@ -94,26 +94,29 @@
             <br>
             <ul class="list-inline">
               <% if logged_in? %>
-              <li>
+              <li class="list-line">
                 <a>
                 <i class="fa fas fa-user-circle fa-fw fa-3x"></i>
               <%= link_to "プロフィール", user_path(current_user.id) %>
               </a>
               </li>
-              <% end %>
 
-              <li>
+              <li class="list-line">
                 <a href="/posts/new">
                   <i class="fa fas fa-paste fa-fw fa-3x"></i>新規投稿
                 </a>
               </li>
-              <li>
+              <br>
+                <% end %>
+
+
+              <li class="list-line">
                 <a href="/posts">
                   <i class="fa fas fa-list fa-fw fa-3x"></i>投稿一覧
                 </a>
               </li>
 
-              <li>
+              <li class="list-line">
                 <a href="/">
                   <i class="fa fa-dribbble fa-fw fa-3x"></i>トップへ戻る
                 </a>

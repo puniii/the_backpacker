@@ -79,13 +79,16 @@
                 <% if post.image.present? %>
                   <%= image_tag(post.image , size: 50) %>
                 <% end %>
-                <p class="post-meta">投稿日<%= post.created_at.strftime("%Y-%m-%d%H:%M") %></p>
-                <%= post.created_at.strftime("%Y-%m-%d%H:%M") %>
+                <p class="post-meta">投稿日：<%= post.created_at.strftime("%Y-%m-%d%H:%M") %></p>
                 <br>
+                <% unless logged_in? %>
+                <p class="post-meta">続きを見るにはログインが必要です</p>
+                <%= link_to 'ログインする', post_path(post.id), class: 'btn btn-dark'%>
+                <% else %>
                 <%= link_to '続きを見る', post_path(post.id), class: 'btn btn-dark'%>
+                <% end %>
                 <hr>
                 <% end %>
-
             </div>
           </div>
         </div>
