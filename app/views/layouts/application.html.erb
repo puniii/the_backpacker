@@ -43,31 +43,31 @@
           <i class="fa fa-times"></i>
         </a>
         <li class="sidebar-brand">
-          <a href="/" onclick="$(" #menu-close").click();"="#menu-close").click();"">the traveler</a>
+          <a href="/" onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();""">the traveler</a>
         </li>
         <li>
-          <a href="/contacts/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">サポート</a>
+          <a href="/contacts/new" onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();""">サポート</a>
         </li>
 
         <% if logged_in? %>
           <li>
-            <a href="/posts" onclick="$(" #menu-close").click();"="#menu-close").click();"">投稿一覧</a>
+            <a href="/posts" onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();""">投稿一覧</a>
           </li>
           <li>
-            <a href="/posts/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">投稿する</a>
+            <a href="/posts/new" onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();""">投稿する</a>
           </li>
           <li>
-            <a onclick="$(" #menu-close").click();"="#menu-close").click();""><%= link_to "プロフィール", user_path(current_user.id) %></a>
+            <a onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();"""><%= link_to "プロフィール", user_path(current_user.id) %></a>
           </li>
           <li>
-            <a onclick="$(" #menu-close").click();"="#menu-close").click();""><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></a>
+            <a onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();"""><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></a>
           </li>
         <% else %>
           <li>
-            <a href="/sessions/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">ログイン</a>
+            <a href="/sessions/new" onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();""">ログイン</a>
           </li>
           <li>
-            <a href="/users/new" onclick="$(" #menu-close").click();"="#menu-close").click();"">サインアップ</a>
+            <a href="/users/new" onclick="$(" #menu-close").click();"="#menu-close" ).click();""=").click();""">サインアップ</a>
           </li>
         <% end %>
 
@@ -82,7 +82,6 @@
     <br>
     <br>
 
-
     <footer>
       <div class="container">
         <div class="row">
@@ -90,25 +89,24 @@
             <h4>
               <strong>the travelers</strong>
             </h4>
-            <p>2018/03</p>
+            <p>2019/02</p>
             <br>
             <ul class="list-inline">
               <% if logged_in? %>
-              <li class="list-line">
-                <a>
-                <i class="fa fas fa-user-circle fa-fw fa-3x"></i>
-              <%= link_to "プロフィール", user_path(current_user.id) %>
-              </a>
-              </li>
+                <li class="list-line">
+                  <a>
+                    <i class="fa fas fa-user-circle fa-fw fa-3x"></i>
+                    <%= link_to "プロフィール", user_path(current_user.id) %>
+                  </a>
+                </li>
 
-              <li class="list-line">
-                <a href="/posts/new">
-                  <i class="fa fas fa-paste fa-fw fa-3x"></i>新規投稿
-                </a>
-              </li>
-              <br>
-                <% end %>
-
+                <li class="list-line">
+                  <a href="/posts/new">
+                    <i class="fa fas fa-paste fa-fw fa-3x"></i>新規投稿
+                  </a>
+                </li>
+                <br>
+              <% end %>
 
               <li class="list-line">
                 <a href="/posts">
